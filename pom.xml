@@ -18,16 +18,22 @@
     <build>
         <plugins>
 
+            <!-- Compiler plugin (unchanged) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
             </plugin>
 
+            <!-- SonarQube plugin with the fix -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>3.11.0.3922</version>
+                <configuration>
+                    <!-- Provide a dummy value to satisfy the 'report' parameter -->
+                    <report>${project.build.directory}/sonar-report.json</report>
+                </configuration>
             </plugin>
 
         </plugins>
